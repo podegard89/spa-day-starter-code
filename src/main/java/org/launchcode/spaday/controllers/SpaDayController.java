@@ -24,31 +24,32 @@ public class SpaDayController {
         }
     }
 
-    @GetMapping(value="")
+    @GetMapping
     @ResponseBody
     public String customerForm () {
         String html = "<form method = 'post'>" +
                 "Name: <br>" +
                 "<input type = 'text' name = 'name'>" +
                 "<br>Skin type: <br>" +
-                "<select name = 'skintype'>" +
+                "<select name = 'skinType'>" +
                 "<option value = 'oily'>Oily</option>" +
                 "<option value = 'combination'>Combination</option>" +
                 "<option value = 'normal'>Normal</option>" +
                 "<option value = 'dry'>Dry</option>" +
                 "</select><br>" +
                 "Manicure or Pedicure? <br>" +
-                "<select name = 'manipedi'>" +
+                "<select name = 'maniPedi'>" +
                 "<option value = 'manicure'>Manicure</option>" +
                 "<option value = 'pedicure'>Pedicure</option>" +
+                "<option value = 'both'>Both</option>" +
                 "</select><br>" +
                 "<input type = 'submit' value = 'Submit'>" +
                 "</form>";
         return html;
     }
 
-    @PostMapping(value="")
-    public String spaMenu(@RequestParam String name, @RequestParam String skintype, @RequestParam String manipedi, Model model) {
+    @PostMapping
+    public String spaMenu(@RequestParam String name, @RequestParam String skinType, @RequestParam String maniPedi, Model model) {
 
         ArrayList<String> facials = new ArrayList<>();
         facials.add("Microdermabrasion");
@@ -58,10 +59,15 @@ public class SpaDayController {
 
         ArrayList<String> appropriateFacials = new ArrayList<>();
         for (int i = 0; i < facials.size(); i ++) {
-            if (checkSkinType(skintype,facials.get(i))) {
+            if (checkSkinType(skinType,facials.get(i))) {
                 appropriateFacials.add(facials.get(i));
             }
         }
+
+        model.addAttribute("name", name);
+        model.addAttribute("skinType", skinType);
+        model.addAttribute("maniPedi", maniPedi);
+        model.addAttribute("appropriateFacials", appropriateFacials);
 
         return "menu";
     }

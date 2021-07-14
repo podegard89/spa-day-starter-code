@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+<!--
+    2 possible solutions!
+    using span here
+    <p>Welcome, <span th:text="${username}"></span>!</p>
+    using concatenating-->
+    <p th:text="'Welcome' + ${username} + '!'"></p>
+</body>
+</html>

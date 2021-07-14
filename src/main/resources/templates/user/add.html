@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<!-- We are creating a form that creates a new user
+     based on the username, email, and password
+     they provide in our form. So, the names of our
+     inputs must match the fields in our user class-->
+    <form method="post" th:action="@{/user}" autocomplete="off">
+        <label>Username:
+            <input type="text" name="username" autocomplete="off">
+        </label>
+        <br>
+        <label>Email:
+            <input type="email" name="email" autocomplete="off">
+        </label>
+        <br>
+        <label>Password:
+            <input type="password" name="password" autocomplete="off">
+        </label>
+        <br>
+        <label>Verify Password:
+            <input type="password" name="verifiedPassword" autocomplete="off">
+        </label>
+        <br>
+        <br>
+        <input type="submit" value="Sign Up!">
+    </form>
+</body>
+</html>

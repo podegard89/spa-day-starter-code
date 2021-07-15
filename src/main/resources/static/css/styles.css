@@ -24,3 +24,9 @@ table {
             padding: 10px;
             text-align: center;
 }
+
+.error {
+    color: red;
+    font-size: 10px;
+    font-style: italic;
+}

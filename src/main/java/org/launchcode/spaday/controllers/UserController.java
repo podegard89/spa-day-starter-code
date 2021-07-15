@@ -15,13 +15,16 @@ public class UserController {
     }
 
     @PostMapping
-    public String processAddUserForm(Model model, @ModelAttribute User user, @RequestParam String verifiedPassword) {
+    public String processAddUserForm(Model model, @ModelAttribute User user, String verifiedPassword) {
         // if verifiedPassword equals password property of user
+        model.addAttribute("username", user.getUsername());
+
         if(verifiedPassword.equals(user.getPassword())) {
-            model.addAttribute("username", user.getUsername());
             return "/user/index";
         }
         else {
+            model.addAttribute("email", user.getEmail());
+            model.addAttribute("error", "Passwords did not match, please re-enter your info!");
             return "/user/add";
         }
 

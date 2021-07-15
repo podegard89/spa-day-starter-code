@@ -11,6 +11,7 @@
     using span here
     <p>Welcome, <span th:text="${username}"></span>!</p>
     using concatenating-->
-    <p th:text="'Welcome' + ${username} + '!'"></p>
+    <h2 th:text="'Welcome, ' + ${username} + '!'"></h2>
+    <a th:href="@{/}">Continue to service selection!</a>
 </body>
 </html>
